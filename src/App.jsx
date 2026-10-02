@@ -78,75 +78,75 @@ function Landing({ onComplete }) {
 
   return (
     <>
-      <p className="topbar">Attention: married men and any man wey get serious woman</p>
+      <p className="topbar">Attention: married men and any man with a serious woman</p>
 
       <main className="letter">
-        <p className="pre">If you dey finish too quick for bed, read this page reach the end.</p>
+        <p className="pre">If you finish too quickly in bed, read this page to the end.</p>
 
         <h1>
-          Rub this small cream before the action, last longer, and <mark>na you go decide when to finish</mark>
+          Rub on this small cream before the action, last longer, and <mark>you decide when to finish</mark>
         </h1>
 
-        <p className="center big">No drug to swallow. No injection. You just rub am, that's all.</p>
+        <p className="center big">No drugs to swallow. No injection. You just rub it on, that's all.</p>
 
         <Photo eager className="shot" src={config.photos.hero} alt={`${config.productName} tube`} fallback={<TubeArt count={1} />} />
 
         <a href="#order" className="btn" onClick={toOrder}>👉 Yes, I want my own cream</a>
-        <p className="center small">NAFDAC approved. We bring am come your house, package covered.</p>
+        <p className="center small">NAFDAC approved. Delivered to your door in a covered package.</p>
 
-        <h2>Oga, make we talk true</h2>
+        <h2>Brother, let's be honest</h2>
         <p>
-          This matter no be about whether you like your woman. You like her well. The wahala be say the body
-          no dey always cooperate, and no man like to talk am outside.
+          This is not about whether you want your woman. You do. The problem is that the body does not
+          always cooperate, and no man likes to talk about it.
         </p>
-        <p>Check whether any of these ones dey happen to you:</p>
+        <p>See if any of these happen to you:</p>
         <ul className="list no">
-          <li>You don finish before your woman even start to enjoy am.</li>
-          <li>After work and Lagos kind of stress, to stand well and stay hard dey turn problem.</li>
-          <li>You don tire for all those heavy drugs wey dey make head and chest do you somehow.</li>
-          <li>You want something wey you fit use quietly, without anybody knowing your business.</li>
+          <li>You finish before your woman has even started to enjoy it.</li>
+          <li>After work and all the stress of the day, getting hard and staying hard becomes a problem.</li>
+          <li>You are tired of heavy drugs that leave your head and chest feeling funny.</li>
+          <li>You want something you can use quietly, without anybody knowing your business.</li>
         </ul>
         <p>
-          If you nod your head for even one, you no be the only one. Plenty men dey face am. The difference be
-          say some men don find wetin dey help them.
+          If you nodded at even one, you are not the only one. Plenty of men face it. The difference is
+          that some men have found something that helps.
         </p>
 
-        <h2>Na here {config.productName} enter</h2>
+        <h2>This is where {config.productName} comes in</h2>
         <p>
-          {config.productName} na herbal cream, NAFDAC approved, wey dem make to <strong>delay release</strong> so
-          you fit control your timing. You no dey swallow am. You dey rub am for the gbola before the show start.
+          {config.productName} is a NAFDAC approved herbal cream made to <strong>delay climax</strong> so
+          you can control your timing. You do not swallow it. You rub it on the gbola before the show starts.
         </p>
         <ul className="list yes">
-          <li><strong>You last longer.</strong> Dem make am to slow down release, so na you dey control the pace.</li>
-          <li><strong>You stay strong.</strong> Dem make am to support your erection and keep am firm.</li>
-          <li><strong>Your mind go rest.</strong> When you no dey fear how long you go last, you go fit face your woman well.</li>
-          <li><strong>E dey work for where you rub am.</strong> No capsule, no waiting for belle to digest anything.</li>
-          <li><strong>E mild for skin.</strong> Dem make am for that private area of a grown man.</li>
+          <li><strong>You last longer.</strong> It is made to delay climax, so you control the pace.</li>
+          <li><strong>You stay strong.</strong> It is made to support your erection and keep it firm.</li>
+          <li><strong>Your mind is at rest.</strong> When you are not worried about how long you will last, you can focus on your woman.</li>
+          <li><strong>It works where you rub it.</strong> No capsules, no waiting for your stomach to digest anything.</li>
+          <li><strong>It is mild on the skin.</strong> It is made for a grown man's private area.</li>
         </ul>
 
         <Photo className="shot" src={config.photos.pack} alt={`${config.productName} pack`} fallback={<TubeArt count={2} />} />
 
-        <h2>How to use am (3 simple steps)</h2>
+        <h2>How to use it (3 simple steps)</h2>
         <ol className="steps">
-          <li><strong>Wash.</strong> Wash the gbola with warm water and clean am dry.</li>
+          <li><strong>Wash.</strong> Wash the gbola with warm water and dry it.</li>
           <li><strong>Rub.</strong> Rub the cream round the whole gbola and the scrotum.</li>
-          <li><strong>Massage.</strong> Massage am for like 5 minutes make e enter body well.</li>
+          <li><strong>Massage.</strong> Massage for about 5 minutes so it absorbs well.</li>
         </ol>
-        <p className="warn">Na for outside body only. For adults only.</p>
+        <p className="warn">For external use only. For adults only.</p>
 
         <Photo className="shot" src={config.photos.usage} alt={`How to apply ${config.productName}`} fallback={<ApplyArt />} />
 
-        <h2>Nobody go know wetin you order</h2>
+        <h2>Nobody will know what you ordered</h2>
         <div className="parcel"><ParcelArt /></div>
         <ul className="list yes">
-          <li>We cover the package well. Nothing dey written for outside.</li>
-          <li>Na only you our dispatch manager go call.</li>
-          <li>Your name and number no dey go anywhere.</li>
+          <li>The package is fully covered. Nothing is written on the outside.</li>
+          <li>Our dispatch manager calls only you.</li>
+          <li>Your name and number go nowhere else.</li>
         </ul>
 
         {hasFeedback && (
           <>
-            <h2>See wetin our customers dey send us</h2>
+            <h2>See what our customers send us</h2>
             <div className="chats">
               {config.feedbackScreenshots.map((src) => (
                 <img key={src} className="chat-shot" src={src} alt="Customer feedback screenshot" loading="lazy" />
@@ -161,10 +161,10 @@ function Landing({ onComplete }) {
           </>
         )}
 
-        <h2 id="order">Oya, pick the one you want 👇</h2>
+        <h2 id="order">Now pick the one you want 👇</h2>
         <p className="center">
-          Normal price na <s>{naira(regularFor(starter))}</s> for one. Today you fit carry am for{' '}
-          <strong className="red">{naira(starter.price)}</strong>. If you buy more, each one go cheap pass.
+          The normal price is <s>{naira(regularFor(starter))}</s> for one. Today you get it for{' '}
+          <strong className="red">{naira(starter.price)}</strong>. Buy more and each one gets cheaper.
         </p>
 
         <div className="packs" role="radiogroup" aria-label="Package">
@@ -180,11 +180,11 @@ function Landing({ onComplete }) {
               <span className="dot" aria-hidden="true" />
               <span className="pack-main">
                 <span className="pack-title">
-                  {p.title} {p.popular && <em>Most men dey pick this one</em>}
+                  {p.title} {p.popular && <em>Most men pick this one</em>}
                 </span>
                 <span className="pack-save">
                   You save {naira(savingFor(p))}
-                  {p.tubes > 1 && ` (${naira(perTube(p))} for each one)`}
+                  {p.tubes > 1 && ` (${naira(perTube(p))} each)`}
                 </span>
               </span>
               <span className="pack-money">
@@ -197,26 +197,26 @@ function Landing({ onComplete }) {
 
         <OrderForm pkg={pkg} onComplete={onComplete} />
 
-        <h2>Questions wey men dey ask us</h2>
+        <h2>Questions men ask us</h2>
         <div className="qa">
-          <p className="q">Na only old men fit use am?</p>
-          <p>No o. Any adult man wey dey sexually active fit use am.</p>
-          <p className="q">E hard to use?</p>
-          <p>Not at all. Wash and dry the gbola, rub the cream well, massage am till e enter body.</p>
-          <p className="q">E dey safe for my skin?</p>
-          <p>Na herbal cream for outside body, and dem make am mild. Still, test small for one side first. If e scratch or pepper you, stop to use am.</p>
-          <p className="q">E dey help erection?</p>
-          <p>Yes. Dem make am to support men wey dey struggle to stand and to stay hard.</p>
-          <p className="q">Person go know wetin I order?</p>
-          <p>No. The package dey covered and na only you we go call.</p>
+          <p className="q">Is it only for older men?</p>
+          <p>No. Any sexually active adult man can use it.</p>
+          <p className="q">Is it hard to use?</p>
+          <p>Not at all. Wash and dry the gbola, rub the cream on well, and massage until it absorbs.</p>
+          <p className="q">Is it safe for my skin?</p>
+          <p>It is a herbal cream for external use and it is made to be mild. Still, test a little on a small area first. If it itches or burns, stop using it.</p>
+          <p className="q">Does it help with erection?</p>
+          <p>Yes. It is made to support men who struggle to get hard and stay hard.</p>
+          <p className="q">Will anyone know what I ordered?</p>
+          <p>No. The package is covered and we call only you.</p>
         </div>
 
         <p className="ps">
-          <strong>P.S.</strong> You fit close this page and nothing go change. Or you fit fill the form, collect your cream,
-          and try something different this week. Na your choice.
+          <strong>P.S.</strong> You can close this page and nothing changes. Or you can fill the form, get your cream,
+          and try something different this week. The choice is yours.
         </p>
         <p className="ps">
-          <strong>P.P.S.</strong> If na {naira(config.packages[1].price)} for 2 you pick, each cream don become{' '}
+          <strong>P.P.S.</strong> If you pick 2 for {naira(config.packages[1].price)}, each cream comes down to{' '}
           {naira(perTube(config.packages[1]))} instead of {naira(config.regularPricePerTube)}.
         </p>
 
@@ -317,8 +317,8 @@ function OrderForm({ pkg, onComplete }) {
   return (
     <form className="order" onSubmit={submit} onFocus={begin}>
       <div className="order-head">
-        <h3>Fill this form make we bring am come</h3>
-        <p>Our dispatch manager go call you to confirm before we deliver.</p>
+        <h3>Fill this form and we will bring it to you</h3>
+        <p>Our dispatch manager will call you to confirm before we deliver.</p>
       </div>
 
       <label>

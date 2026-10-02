@@ -54,7 +54,7 @@ export const config = {
   //    /public/images and list them here, e.g. ['/images/chat-1.jpg', '/images/chat-2.jpg']
   feedbackScreenshots: [],
   // 2) Typed-out messages, shown as chat bubbles, e.g.
-  //    { text: 'Oga this cream work o', name: 'Customer', place: 'Ibadan' }
+  //    { text: 'the customer message', name: 'Customer', place: 'Ibadan' }
   feedbackMessages: [],
 }
 
