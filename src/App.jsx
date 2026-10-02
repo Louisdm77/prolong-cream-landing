@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { config, naira, regularFor, savingFor, percentOff, perTube } from './config'
+import { config, naira, regularFor, savingFor, perTube } from './config'
 import { track, packageParams } from './pixel'
-import { Photo, TubeArt, ParcelArt, ApplyArt, Check } from './Illustrations'
+import { Photo, TubeArt, ParcelArt, ApplyArt } from './Illustrations'
 
 const STATES = [
   'Abia', 'Adamawa', 'Akwa Ibom', 'Anambra', 'Bauchi', 'Bayelsa', 'Benue', 'Borno', 'Cross River',
@@ -55,6 +55,7 @@ function Landing({ onComplete }) {
   const [pkgId, setPkgId] = useState(config.defaultPackageId)
   const pkg = useMemo(() => config.packages.find((p) => p.id === pkgId), [pkgId])
   const starter = config.packages[0]
+  const hasFeedback = config.feedbackScreenshots.length > 0 || config.feedbackMessages.length > 0
 
   useEffect(() => {
     track('ViewContent', {
@@ -77,234 +78,158 @@ function Landing({ onComplete }) {
 
   return (
     <>
-      <p className="topbar">NAFDAC approved. Discreet packaging. Private delivery.</p>
+      <p className="topbar">Attention: married men and any man wey get serious woman</p>
 
-      <header className="hero">
-        <div className="wrap hero-grid">
-          <div>
-            <p className="pill">For men who want to last longer</p>
-            <h1>Last longer tonight. Finish when you decide.</h1>
-            <p className="lede">
-              {config.productName} is a herbal cream you rub on before intimacy. It is made to delay
-              climax, so you set the pace, stay firm and keep going until you are both satisfied.
-            </p>
-            <ul className="ticks">
-              <li><Check /> No pills to swallow. You apply it on the skin.</li>
-              <li><Check /> Made to be gentle on intimate skin.</li>
-              <li><Check /> Arrives in plain packaging. Nobody knows what is inside.</li>
-            </ul>
+      <main className="letter">
+        <p className="pre">If you dey finish too quick for bed, read this page reach the end.</p>
 
-            <div className="pricebox">
-              <div>
-                <span className="was">{naira(regularFor(starter))}</span>
-                <span className="now">{naira(starter.price)}</span>
-              </div>
-              <span className="save">Save {percentOff(starter)}% today</span>
+        <h1>
+          Rub this small cream before the action, last longer, and <mark>na you go decide when to finish</mark>
+        </h1>
+
+        <p className="center big">No drug to swallow. No injection. You just rub am, that's all.</p>
+
+        <Photo eager className="shot" src={config.photos.hero} alt={`${config.productName} tube`} fallback={<TubeArt count={1} />} />
+
+        <a href="#order" className="btn" onClick={toOrder}>👉 Yes, I want my own cream</a>
+        <p className="center small">NAFDAC approved. We bring am come your house, package covered.</p>
+
+        <h2>Oga, make we talk true</h2>
+        <p>
+          This matter no be about whether you like your woman. You like her well. The wahala be say the body
+          no dey always cooperate, and no man like to talk am outside.
+        </p>
+        <p>Check whether any of these ones dey happen to you:</p>
+        <ul className="list no">
+          <li>You don finish before your woman even start to enjoy am.</li>
+          <li>After work and Lagos kind of stress, to stand well and stay hard dey turn problem.</li>
+          <li>You don tire for all those heavy drugs wey dey make head and chest do you somehow.</li>
+          <li>You want something wey you fit use quietly, without anybody knowing your business.</li>
+        </ul>
+        <p>
+          If you nod your head for even one, you no be the only one. Plenty men dey face am. The difference be
+          say some men don find wetin dey help them.
+        </p>
+
+        <h2>Na here {config.productName} enter</h2>
+        <p>
+          {config.productName} na herbal cream, NAFDAC approved, wey dem make to <strong>delay release</strong> so
+          you fit control your timing. You no dey swallow am. You dey rub am for the gbola before the show start.
+        </p>
+        <ul className="list yes">
+          <li><strong>You last longer.</strong> Dem make am to slow down release, so na you dey control the pace.</li>
+          <li><strong>You stay strong.</strong> Dem make am to support your erection and keep am firm.</li>
+          <li><strong>Your mind go rest.</strong> When you no dey fear how long you go last, you go fit face your woman well.</li>
+          <li><strong>E dey work for where you rub am.</strong> No capsule, no waiting for belle to digest anything.</li>
+          <li><strong>E mild for skin.</strong> Dem make am for that private area of a grown man.</li>
+        </ul>
+
+        <Photo className="shot" src={config.photos.pack} alt={`${config.productName} pack`} fallback={<TubeArt count={2} />} />
+
+        <h2>How to use am (3 simple steps)</h2>
+        <ol className="steps">
+          <li><strong>Wash.</strong> Wash the gbola with warm water and clean am dry.</li>
+          <li><strong>Rub.</strong> Rub the cream round the whole gbola and the scrotum.</li>
+          <li><strong>Massage.</strong> Massage am for like 5 minutes make e enter body well.</li>
+        </ol>
+        <p className="warn">Na for outside body only. For adults only.</p>
+
+        <Photo className="shot" src={config.photos.usage} alt={`How to apply ${config.productName}`} fallback={<ApplyArt />} />
+
+        <h2>Nobody go know wetin you order</h2>
+        <div className="parcel"><ParcelArt /></div>
+        <ul className="list yes">
+          <li>We cover the package well. Nothing dey written for outside.</li>
+          <li>Na only you our dispatch manager go call.</li>
+          <li>Your name and number no dey go anywhere.</li>
+        </ul>
+
+        {hasFeedback && (
+          <>
+            <h2>See wetin our customers dey send us</h2>
+            <div className="chats">
+              {config.feedbackScreenshots.map((src) => (
+                <img key={src} className="chat-shot" src={src} alt="Customer feedback screenshot" loading="lazy" />
+              ))}
+              {config.feedbackMessages.map((m) => (
+                <div key={m.text} className="bubble">
+                  <p>{m.text}</p>
+                  <span>{m.name}{m.place ? `, ${m.place}` : ''}</span>
+                </div>
+              ))}
             </div>
+          </>
+        )}
 
-            <a href="#order" className="btn btn-big" onClick={toOrder}>Order now from {naira(starter.price)}</a>
-            <p className="fine">Fill a 30 second form. Our dispatch manager calls you to confirm delivery.</p>
-          </div>
+        <h2 id="order">Oya, pick the one you want 👇</h2>
+        <p className="center">
+          Normal price na <s>{naira(regularFor(starter))}</s> for one. Today you fit carry am for{' '}
+          <strong className="red">{naira(starter.price)}</strong>. If you buy more, each one go cheap pass.
+        </p>
 
-          <div className="hero-art">
-            <Photo eager src={config.photos.hero} alt={`${config.productName} tube`} fallback={<TubeArt count={1} />} />
-          </div>
+        <div className="packs" role="radiogroup" aria-label="Package">
+          {config.packages.map((p) => (
+            <button
+              key={p.id}
+              type="button"
+              role="radio"
+              aria-checked={p.id === pkgId}
+              className={`pack ${p.id === pkgId ? 'is-on' : ''}`}
+              onClick={() => choose(p.id)}
+            >
+              <span className="dot" aria-hidden="true" />
+              <span className="pack-main">
+                <span className="pack-title">
+                  {p.title} {p.popular && <em>Most men dey pick this one</em>}
+                </span>
+                <span className="pack-save">
+                  You save {naira(savingFor(p))}
+                  {p.tubes > 1 && ` (${naira(perTube(p))} for each one)`}
+                </span>
+              </span>
+              <span className="pack-money">
+                <s>{naira(regularFor(p))}</s>
+                <b>{naira(p.price)}</b>
+              </span>
+            </button>
+          ))}
         </div>
-      </header>
 
-      <section className="band band-dark">
-        <div className="wrap split">
-          <div>
-            <h2>It is not about desire. It is about control.</h2>
-            <p className="sub">
-              Stress, long workdays and worry get in the way for plenty of men. If any of these sound
-              like you, you are not alone, and you do not have to keep quiet about it.
-            </p>
-          </div>
-          <ul className="worries">
-            <li>You finish before you and your woman are ready.</li>
-            <li>After a long, stressful day you worry about getting and keeping an erection.</li>
-            <li>You want better control without swallowing harsh, heavy pills.</li>
-            <li>You want something private that you can use without any drama.</li>
-          </ul>
+        <OrderForm pkg={pkg} onComplete={onComplete} />
+
+        <h2>Questions wey men dey ask us</h2>
+        <div className="qa">
+          <p className="q">Na only old men fit use am?</p>
+          <p>No o. Any adult man wey dey sexually active fit use am.</p>
+          <p className="q">E hard to use?</p>
+          <p>Not at all. Wash and dry the gbola, rub the cream well, massage am till e enter body.</p>
+          <p className="q">E dey safe for my skin?</p>
+          <p>Na herbal cream for outside body, and dem make am mild. Still, test small for one side first. If e scratch or pepper you, stop to use am.</p>
+          <p className="q">E dey help erection?</p>
+          <p>Yes. Dem make am to support men wey dey struggle to stand and to stay hard.</p>
+          <p className="q">Person go know wetin I order?</p>
+          <p>No. The package dey covered and na only you we go call.</p>
         </div>
-      </section>
 
-      <section className="band" id="product">
-        <div className="wrap">
-          <h2>Meet {config.productName}</h2>
-          <p className="sub">One small tube, made for three things men ask for most.</p>
-          <div className="trio">
-            <article>
-              <h3>Go longer</h3>
-              <p>Made to delay climax and support your endurance, so the pace stays in your hands.</p>
-            </article>
-            <article>
-              <h3>Stay firm</h3>
-              <p>Made to support your erection and help you keep it firm from start to finish.</p>
-            </article>
-            <article>
-              <h3>Walk in confident</h3>
-              <p>When you are not worried about how long you will last, you can focus on her.</p>
-            </article>
-          </div>
-        </div>
-      </section>
+        <p className="ps">
+          <strong>P.S.</strong> You fit close this page and nothing go change. Or you fit fill the form, collect your cream,
+          and try something different this week. Na your choice.
+        </p>
+        <p className="ps">
+          <strong>P.P.S.</strong> If na {naira(config.packages[1].price)} for 2 you pick, each cream don become{' '}
+          {naira(perTube(config.packages[1]))} instead of {naira(config.regularPricePerTube)}.
+        </p>
 
-      <section className="band band-tint">
-        <div className="wrap split split-art">
-          <div className="art-frame">
-            <Photo src={config.photos.pack} alt={`${config.productName} pack`} fallback={<TubeArt count={2} />} />
-          </div>
-          <div>
-            <h2>Why men choose the cream over pills</h2>
-            <dl className="benefits">
-              <div>
-                <dt>You stay in charge of your timing</dt>
-                <dd>Made to help you pace yourself and stay relaxed instead of rushing.</dd>
-              </div>
-              <div>
-                <dt>Less worry before you start</dt>
-                <dd>Preparing ahead takes the pressure off, so you feel composed before intimacy begins.</dd>
-              </div>
-              <div>
-                <dt>Works where you apply it</dt>
-                <dd>Rub it straight on the gbola. No capsules, no waiting on your stomach.</dd>
-              </div>
-              <div>
-                <dt>Mild on the skin</dt>
-                <dd>A soothing blend developed for an adult man's intimate skin.</dd>
-              </div>
-            </dl>
-            <a href="#order" className="btn" onClick={toOrder}>Get my cream</a>
-          </div>
-        </div>
-      </section>
-
-      <section className="band">
-        <div className="wrap split split-art">
-          <div>
-            <h2>Ready in three easy steps</h2>
-            <ol className="steps">
-              <li>
-                <h3>Clean</h3>
-                <p>Wash the gbola with warm water and dry it gently.</p>
-              </li>
-              <li>
-                <h3>Apply</h3>
-                <p>Rub the cream smoothly over the whole gbola and scrotum.</p>
-              </li>
-              <li>
-                <h3>Massage</h3>
-                <p>Massage for about 5 minutes so it absorbs properly.</p>
-              </li>
-            </ol>
-            <p className="note">For external use only. Adults only.</p>
-          </div>
-          <div className="art-frame">
-            <Photo src={config.photos.usage} alt={`How to apply ${config.productName}`} fallback={<ApplyArt />} />
-          </div>
-        </div>
-      </section>
-
-      <section className="band band-dark">
-        <div className="wrap split split-art">
-          <div className="art-plain"><ParcelArt /></div>
-          <div>
-            <h2>Your private life stays private</h2>
-            <ul className="ticks ticks-light">
-              <li><Check /> Your order details are kept 100% private.</li>
-              <li><Check /> Plain, discreet packaging with nothing written outside.</li>
-              <li><Check /> Handed to you by a confidential courier.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="band band-tint">
-        <div className="wrap">
-          <h2>Real men. Real experiences.</h2>
-          <p className="sub">What customers told us after using {config.productName}.</p>
-          <div className="reviews">
-            {config.reviews.map((r) => (
-              <figure key={r.name}>
-                <div className="stars" aria-label="5 out of 5 stars">★★★★★</div>
-                <blockquote>{r.text}</blockquote>
-                <figcaption><strong>{r.name}</strong>, {r.place}</figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="band" id="order">
-        <div className="wrap">
-          <h2>Choose your package</h2>
-          <p className="sub">The more tubes you take, the less you pay for each one.</p>
-
-          <div className="packs" role="radiogroup" aria-label="Package">
-            {config.packages.map((p) => (
-              <button
-                key={p.id}
-                type="button"
-                role="radio"
-                aria-checked={p.id === pkgId}
-                className={`pack ${p.id === pkgId ? 'is-on' : ''}`}
-                onClick={() => choose(p.id)}
-              >
-                {p.popular && <span className="flag">Most popular</span>}
-                <span className="pack-title">{p.title}</span>
-                <span className="pack-tag">{p.tag}</span>
-                <span className="pack-price">{naira(p.price)}</span>
-                <span className="pack-was">{naira(regularFor(p))}</span>
-                <span className="pack-save">Save {naira(savingFor(p))} ({percentOff(p)}% off)</span>
-                {p.tubes > 1 && <span className="pack-each">{naira(perTube(p))} per tube</span>}
-              </button>
-            ))}
-          </div>
-
-          <OrderForm pkg={pkg} onComplete={onComplete} />
-        </div>
-      </section>
-
-      <section className="band band-tint">
-        <div className="wrap narrow">
-          <h2>Questions men ask before ordering</h2>
-          <div className="faq">
-            <details>
-              <summary>Is it only for older men?</summary>
-              <p>No. It is for sexually active adult men of any age.</p>
-            </details>
-            <details>
-              <summary>Is it difficult to use?</summary>
-              <p>Not at all. Clean and dry the gbola, rub on a good amount, then massage the gbola and scrotum until it absorbs.</p>
-            </details>
-            <details>
-              <summary>Is it safe for my skin?</summary>
-              <p>It is a herbal cream for external use, made to be mild on intimate skin. Try a little on a small area first, and stop using it if you notice any irritation.</p>
-            </details>
-            <details>
-              <summary>Does it help with erection?</summary>
-              <p>Yes. It is made to support men who struggle with getting and keeping an erection.</p>
-            </details>
-            <details>
-              <summary>Will anyone know what I ordered?</summary>
-              <p>No. It comes in plain packaging and our dispatch manager speaks only with you.</p>
-            </details>
-          </div>
-          <a href="#order" className="btn btn-big" onClick={toOrder}>Order my cream now</a>
-        </div>
-      </section>
+        <a href="#order" className="btn" onClick={toOrder}>👉 Take me to the order form</a>
+      </main>
 
       <footer className="footer">
-        <div className="wrap narrow">
-          <p>
-            This site is not a part of the Facebook website or Facebook Inc. Additionally, this site is
-            not endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.
-          </p>
-          <p>Results differ from person to person. This product is not intended to diagnose, treat or cure any disease.</p>
-          <p>&copy; {new Date().getFullYear()} {config.productName} Nigeria. All rights reserved.</p>
-        </div>
+        <p>
+          This site is not a part of the Facebook website or Facebook Inc. Additionally, this site is
+          not endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.
+        </p>
+        <p>Results differ from person to person. This product is not intended to diagnose, treat or cure any disease.</p>
+        <p>&copy; {new Date().getFullYear()} {config.productName} Nigeria. All rights reserved.</p>
       </footer>
 
       <div className="sticky">
@@ -392,8 +317,8 @@ function OrderForm({ pkg, onComplete }) {
   return (
     <form className="order" onSubmit={submit} onFocus={begin}>
       <div className="order-head">
-        <h3>Where should we deliver?</h3>
-        <p>Our dispatch manager will call you to confirm delivery.</p>
+        <h3>Fill this form make we bring am come</h3>
+        <p>Our dispatch manager go call you to confirm before we deliver.</p>
       </div>
 
       <label>
@@ -430,7 +355,7 @@ function OrderForm({ pkg, onComplete }) {
       {error && <p className="error full" role="alert">{error}</p>}
 
       <button className="btn btn-big full" type="submit" disabled={status === 'sending'}>
-        {status === 'sending' ? 'Placing your order…' : `Place my order: ${naira(pkg.price)}`}
+        {status === 'sending' ? 'Sending your order…' : `Send my order: ${naira(pkg.price)}`}
       </button>
       <p className="fine full">Your details are used only to deliver your order.</p>
     </form>
@@ -460,7 +385,7 @@ function ThankYou({ order: passed }) {
 
   return (
     <main className="thanks">
-      <div className="wrap narrow">
+      <div className="letter">
         <div className="thanks-art"><TubeArt count={order ? order.tubes : 1} /></div>
         <h1>{order ? `Order placed. Thank you, ${order.name.split(' ')[0]}.` : 'Thank you.'}</h1>
         {order ? (

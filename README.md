@@ -20,7 +20,7 @@ npm run build    # production files in /dist
 3. **Photos.** The page loads your product photos from degreatstores.com. To host them here,
    put the files in `public/images/` and update `photos` in `src/config.js`.
 
-Prices, packages, reviews and photos are all in `src/config.js`.
+Prices, packages, photos and customer feedback are all in `src/config.js`. The feedback section stays hidden until you add real customer screenshots or messages there.
 
 ## Pixel events
 

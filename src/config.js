@@ -47,25 +47,15 @@ export const config = {
   ],
   defaultPackageId: 'two',
 
-  // Customer feedback carried over from the current page.
-  // Only publish reviews that real customers actually gave you.
-  reviews: [
-    {
-      text: 'This cream helped me stay more in control during intimate moments. I was hard all through and I had a good time with my wife.',
-      name: 'Mr. Oluwaseun',
-      place: 'Lagos',
-    },
-    {
-      text: 'Very straightforward to use. No strange sensations and it gave me the perfect erection I needed without having to take any pills.',
-      name: 'Chukwudi',
-      place: 'Abuja, FCT',
-    },
-    {
-      text: 'My babe and I had the best time ever in the bedroom after I tried this cream. Delivery to my place was fast and smooth.',
-      name: 'Emma',
-      place: 'Jos',
-    },
-  ],
+  // Customer feedback. Leave both lists empty and the section stays hidden.
+  // Only add feedback that real customers actually sent you.
+  //
+  // 1) Screenshots of real WhatsApp chats (best for this style): put the image files in
+  //    /public/images and list them here, e.g. ['/images/chat-1.jpg', '/images/chat-2.jpg']
+  feedbackScreenshots: [],
+  // 2) Typed-out messages, shown as chat bubbles, e.g.
+  //    { text: 'Oga this cream work o', name: 'Customer', place: 'Ibadan' }
+  feedbackMessages: [],
 }
 
 export const naira = (n) => '₦' + Number(n).toLocaleString('en-NG')
