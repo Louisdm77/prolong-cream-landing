@@ -86,7 +86,6 @@ h2 { font-size: clamp(27px, 7.5vw, 38px); line-height: 1.15; margin: 38px 0 16px
 .list li::before { position: absolute; left: 0; top: 0; font-size: 19px; }
 .list.no li::before { content: '❌'; }
 .list.yes li::before { content: '✅'; }
-.list.want li::before { content: '👉'; }
 
 .steps { counter-reset: s; }
 .steps li { counter-increment: s; position: relative; padding: 4px 0 14px 52px; }
