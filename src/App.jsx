@@ -78,16 +78,16 @@ function Landing({ onComplete }) {
 
   return (
     <>
-      <p className="topbar">Attention: married men and any man with a serious woman</p>
+      <p className="topbar">For adult men only (18+)</p>
 
       <main className="letter">
-        <p className="pre">If you finish too quickly in bed, read this page to the end.</p>
+        <p className="pre">A plain message for grown men. Read it to the end.</p>
 
         <h1>
-          Rub on this small cream before the action, last longer, and <mark>you decide when to finish</mark>
+          The small herbal cream men use for <mark>more staying power and more confidence</mark>
         </h1>
 
-        <p className="center big">No drugs to swallow. No injection. You just rub it on, that's all.</p>
+        <p className="center big">No drugs to swallow. No injection. It is a cream that is rubbed on, that's all.</p>
 
         <Photo eager className="shot" src={config.photos.hero} alt={`${config.productName} tube`} fallback={<TubeArt count={1} />} />
 
@@ -96,40 +96,39 @@ function Landing({ onComplete }) {
 
         <h2>Brother, let's be honest</h2>
         <p>
-          This is not about whether you want your woman. You do. The problem is that the body does not
-          always cooperate, and no man likes to talk about it.
+          Stamina is something most men think about and very few men talk about. Stress, long workdays
+          and plain tiredness all play their part.
         </p>
-        <p>See if any of these happen to you:</p>
-        <ul className="list no">
-          <li>You finish before your woman has even started to enjoy it.</li>
-          <li>After work and all the stress of the day, getting hard and staying hard becomes a problem.</li>
-          <li>You are tired of heavy drugs that leave your head and chest feeling funny.</li>
-          <li>You want something you can use quietly, without anybody knowing your business.</li>
+        <p>This is what men tell us they want:</p>
+        <ul className="list want">
+          <li>More staying power in intimate moments.</li>
+          <li>More confidence at the end of a long, stressful day.</li>
+          <li>An option that is not another heavy pill to swallow.</li>
+          <li>Something private that nobody else needs to know about.</li>
         </ul>
         <p>
-          If you nodded at even one, you are not the only one. Plenty of men face it. The difference is
-          that some men have found something that helps.
+          That is exactly what this cream was made for.
         </p>
 
         <h2>This is where {config.productName} comes in</h2>
         <p>
-          {config.productName} is a NAFDAC approved herbal cream made to <strong>delay climax</strong> so
-          you can control your timing. You do not swallow it. You rub it on the gbola before the show starts.
+          {config.productName} is a NAFDAC approved herbal cream for men, made to <strong>support stamina
+          and control</strong> during intimacy. It is not swallowed. It is rubbed on the skin beforehand.
         </p>
         <ul className="list yes">
-          <li><strong>You last longer.</strong> It is made to delay climax, so you control the pace.</li>
-          <li><strong>You stay strong.</strong> It is made to support your erection and keep it firm.</li>
-          <li><strong>Your mind is at rest.</strong> When you are not worried about how long you will last, you can focus on your woman.</li>
-          <li><strong>It works where you rub it.</strong> No capsules, no waiting for your stomach to digest anything.</li>
-          <li><strong>It is mild on the skin.</strong> It is made for a grown man's private area.</li>
+          <li><strong>Staying power.</strong> Made to support endurance and control of the pace.</li>
+          <li><strong>Firmness.</strong> Made to support firmness from start to finish.</li>
+          <li><strong>Peace of mind.</strong> Preparing ahead means one less thing to think about.</li>
+          <li><strong>Works where it is applied.</strong> No capsules, no waiting for the stomach to digest anything.</li>
+          <li><strong>It is mild on the skin.</strong> Made for a grown man's intimate skin.</li>
         </ul>
 
         <Photo className="shot" src={config.photos.pack} alt={`${config.productName} pack`} fallback={<TubeArt count={2} />} />
 
         <h2>How to use it (3 simple steps)</h2>
         <ol className="steps">
-          <li><strong>Wash.</strong> Wash the gbola with warm water and dry it.</li>
-          <li><strong>Rub.</strong> Rub the cream round the whole gbola and the scrotum.</li>
+          <li><strong>Wash.</strong> Wash the private area with warm water and dry it.</li>
+          <li><strong>Rub.</strong> Rub the cream over the whole private area.</li>
           <li><strong>Massage.</strong> Massage for about 5 minutes so it absorbs well.</li>
         </ol>
         <p className="warn">For external use only. For adults only.</p>
@@ -200,13 +199,13 @@ function Landing({ onComplete }) {
         <h2>Questions men ask us</h2>
         <div className="qa">
           <p className="q">Is it only for older men?</p>
-          <p>No. Any sexually active adult man can use it.</p>
+          <p>No. It is for adult men of any age.</p>
           <p className="q">Is it hard to use?</p>
-          <p>Not at all. Wash and dry the gbola, rub the cream on well, and massage until it absorbs.</p>
+          <p>Not at all. Wash and dry the area, rub the cream on well, and massage until it absorbs.</p>
           <p className="q">Is it safe for my skin?</p>
           <p>It is a herbal cream for external use and it is made to be mild. Still, test a little on a small area first. If it itches or burns, stop using it.</p>
-          <p className="q">Does it help with erection?</p>
-          <p>Yes. It is made to support men who struggle to get hard and stay hard.</p>
+          <p className="q">What is it made to do?</p>
+          <p>It is made to support stamina, control and firmness during intimacy. Results differ from man to man.</p>
           <p className="q">Will anyone know what I ordered?</p>
           <p>No. The package is covered and we call only you.</p>
         </div>
