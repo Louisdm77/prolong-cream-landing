@@ -32,7 +32,8 @@ export const config = {
 
   // Orders: set at least one of these (see .env.example).
   orderEndpoint: env.VITE_ORDER_ENDPOINT || '',
-  whatsappNumber: (env.VITE_WHATSAPP_NUMBER || '').replace(/\D/g, ''),
+  // Orders open as a ready-typed WhatsApp message to this number.
+  whatsappNumber: (env.VITE_WHATSAPP_NUMBER || '2348135390524').replace(/\D/g, ''),
 
   // Product photos, stored in /public/images. Replace the files or change the paths.
   photos: {

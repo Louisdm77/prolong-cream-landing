@@ -247,7 +247,7 @@ function Landing({ onComplete }) {
 function CallLine() {
   return (
     <p className="call">
-      Prefer to talk? Call{' '}
+      Prefer to talk? Call or WhatsApp{' '}
       <a href={phoneHref} onClick={() => track('Contact')}>{phonePretty}</a>
     </p>
   )
@@ -328,7 +328,7 @@ function OrderForm({ pkg, onComplete }) {
     <form className="order" onSubmit={submit} onFocus={begin}>
       <div className="order-head">
         <h3>Fill this form and we will bring it to you</h3>
-        <p>Our dispatch manager will call you to confirm before we deliver.</p>
+        <p>Tap the button and your order opens in WhatsApp. Press send and we will confirm delivery.</p>
       </div>
 
       <label>
