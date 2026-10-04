@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { config, naira, regularFor, savingFor, perTube, phonePretty, phoneHref } from './config'
 import { track, packageParams } from './pixel'
-import { TubeArt, ParcelArt } from './Illustrations'
+import { ParcelArt } from './Illustrations'
 
 const STATES = [
   'Abia', 'Adamawa', 'Akwa Ibom', 'Anambra', 'Bauchi', 'Bayelsa', 'Benue', 'Borno', 'Cross River',
@@ -244,7 +244,7 @@ function Landing({ onComplete }) {
 function CallLine() {
   return (
     <p className="call">
-      Prefer to talk? Call or WhatsApp{' '}
+      Prefer to talk? Call{' '}
       <a href={phoneHref} onClick={() => track('Contact')}>{phonePretty}</a>
     </p>
   )
@@ -274,11 +274,6 @@ function OrderForm({ pkg, pkgId, choose, onComplete }) {
       setError('Enter a phone number with at least 10 digits so we can call you.')
       return
     }
-    if (!config.orderEndpoint && !config.whatsappNumber) {
-      setError('The order form is not connected yet. Set VITE_ORDER_ENDPOINT or VITE_WHATSAPP_NUMBER (see README).')
-      return
-    }
-
     const placed = {
       package: `${pkg.title} (${naira(pkg.price)})`,
       packageId: pkg.id,
@@ -290,34 +285,39 @@ function OrderForm({ pkg, pkgId, choose, onComplete }) {
       placedAt: new Date().toISOString(),
     }
 
+    // What lands in the inbox: readable labels, plus FormSubmit's own settings (the _ fields).
+    const email = {
+      _subject: `New order: ${placed.package} from ${form.name}`,
+      _template: 'table',
+      _captcha: 'false',
+      Package: placed.package,
+      Name: form.name,
+      Phone: form.phone,
+      'Other phone': form.phone2 || 'none',
+      Address: form.address,
+      State: form.state,
+      'Ordered at': new Date().toLocaleString('en-NG'),
+    }
+
+    const url = config.orderEndpoint || `https://formsubmit.co/ajax/${config.orderEmail}`
+    const body = config.orderEndpoint ? placed : email
+
     setStatus('sending')
     try {
-      if (config.orderEndpoint) {
-        const res = await fetch(config.orderEndpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(placed),
-        })
-        if (!res.ok) throw new Error(`Order endpoint answered ${res.status}`)
-      }
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(body),
+      })
+      if (!res.ok) throw new Error(`Order service answered ${res.status}`)
+      const data = await res.json().catch(() => ({}))
+      if (String(data.success) === 'false') throw new Error(data.message || 'Order service refused the order')
       track('Lead', packageParams(pkg))
-      if (config.whatsappNumber) {
-        const text = [
-          `New order: ${config.productName}`,
-          `Package: ${placed.package}`,
-          `Name: ${form.name}`,
-          `Phone: ${form.phone}`,
-          form.phone2 && `Other phone: ${form.phone2}`,
-          `Address: ${form.address}`,
-          `State: ${form.state}`,
-        ].filter(Boolean).join('\n')
-        window.open(`https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent(text)}`, '_blank', 'noopener')
-      }
       onComplete(placed)
     } catch (err) {
       console.error(err)
       setStatus('idle')
-      setError('Your order did not go through. Check your network and tap the button again.')
+      setError(`Your order did not go through. Check your network and tap the button again, or call ${phonePretty}.`)
     }
   }
 
@@ -325,7 +325,7 @@ function OrderForm({ pkg, pkgId, choose, onComplete }) {
     <form id="order-form" className="order" onSubmit={submit} onFocus={begin}>
       <div className="order-head">
         <h3>Fill this form and we will bring it to you</h3>
-        <p>Tap the button and your order opens in WhatsApp. Press send and we will confirm delivery.</p>
+        <p>It takes less than a minute. We will contact you to confirm delivery.</p>
       </div>
 
       <label className="full">
@@ -403,18 +403,18 @@ function ThankYou({ order: passed }) {
   return (
     <main className="thanks">
       <div className="letter">
-        <div className="thanks-art"><TubeArt count={order ? order.tubes : 1} /></div>
-        <h1>{order ? `Order placed. Thank you, ${order.name.split(' ')[0]}.` : 'Thank you.'}</h1>
+        <img className="thanks-img" src={config.photos.hero} alt={config.productName} />
+        <h1>{order ? `Your order has been sent. Thank you, ${order.name.split(' ')[0]}.` : 'Thank you.'}</h1>
         {order ? (
           <>
             <p className="lede">
-              We have your order for <strong>{order.package}</strong>. Keep your phone close: our
-              dispatch manager will call <strong>{order.phone}</strong> to confirm delivery.
+              We have received your order for <strong>{order.package}</strong>. We will contact you
+              soon on <strong>{order.phone}</strong> to confirm delivery, so keep your phone close.
             </p>
             <p className="fine">Your cream arrives in plain, discreet packaging.</p>
           </>
         ) : (
-          <p className="lede">If you just placed an order, our dispatch manager will call you to confirm delivery.</p>
+          <p className="lede">If you just placed an order, we will contact you soon to confirm delivery.</p>
         )}
         <a className="btn" href="/">Back to the product page</a>
       </div>

@@ -30,10 +30,11 @@ export const config = {
         '2359349084882296',
       ],
 
-  // Orders: set at least one of these (see .env.example).
+  // Orders are emailed to this address through FormSubmit (formsubmit.co).
+  // The very first order triggers a one-time activation email: click the link in it.
+  orderEmail: env.VITE_ORDER_EMAIL || 'akwajidan1@gmail.com',
+  // Optional: send orders to your own URL instead of email (any endpoint that accepts a JSON POST).
   orderEndpoint: env.VITE_ORDER_ENDPOINT || '',
-  // Orders open as a ready-typed WhatsApp message to this number.
-  whatsappNumber: (env.VITE_WHATSAPP_NUMBER || '2348135390524').replace(/\D/g, ''),
 
   // Product photos, stored in /public/images. Replace the files or change the paths.
   photos: {

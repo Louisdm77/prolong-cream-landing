@@ -12,9 +12,9 @@ npm run build    # production files in /dist
 
 ## Before you run ads
 
-1. **Connect the order form.** Copy `.env.example` to `.env` and set `VITE_ORDER_ENDPOINT`
-   (Formspree, a Google Sheets Apps Script URL, Make, Zapier or your own API) and/or
-   `VITE_WHATSAPP_NUMBER`. Until one is set, the form shows an error instead of taking orders.
+1. **Activate order emails.** Orders are emailed to the address in `src/config.js` (`orderEmail`)
+   through FormSubmit. Place one test order, then click the activation link FormSubmit emails you.
+   After that every order arrives in the inbox. To use another address set `VITE_ORDER_EMAIL`.
 2. **Check the pixel IDs.** `src/config.js` uses the seven pixel IDs from degreatstores.com.
    Set `VITE_FB_PIXEL_IDS` (comma separated) to use different ones.
 3. **Photos.** The product photos are in `public/images/`. Replace the files to change them.

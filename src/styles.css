@@ -243,3 +243,5 @@ h2 { font-size: clamp(27px, 7.5vw, 38px); line-height: 1.15; margin: 38px 0 16px
 /* Price cards are display only: tapping one jumps to the form with that package chosen */
 a.pack { text-decoration: none; }
 .order { scroll-margin-top: 12px; }
+
+.thanks-img { width: 150px; margin: 0 auto 14px; }
