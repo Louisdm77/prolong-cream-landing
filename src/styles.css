@@ -239,3 +239,7 @@ h2 { font-size: clamp(27px, 7.5vw, 38px); line-height: 1.15; margin: 38px 0 16px
 .step { margin: 6px 0 0; font-weight: bold; font-size: 19px; display: flex; align-items: center; gap: 10px; }
 .step b { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--red); color: #fff; font: 20px/34px var(--head); text-align: center; }
 @media (max-width: 420px) { .pack { padding: 12px 10px; gap: 9px; } .pack-title { font-size: 17px; } .pack-money b { font-size: 23px; } }
+
+/* Price cards are display only: tapping one jumps to the form with that package chosen */
+a.pack { text-decoration: none; }
+.order { scroll-margin-top: 12px; }

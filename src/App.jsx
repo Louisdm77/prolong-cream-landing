@@ -71,6 +71,11 @@ function Landing({ onComplete }) {
     track('AddToCart', packageParams(config.packages.find((p) => p.id === id)))
   }
 
+  const toForm = (e) => {
+    e.preventDefault()
+    document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' })
+  }
+
   const toOrder = (e) => {
     e.preventDefault()
     document.getElementById('order').scrollIntoView({ behavior: 'smooth' })
@@ -161,11 +166,31 @@ function Landing({ onComplete }) {
           </>
         )}
 
-        <h2 id="order">Order yours here 👇</h2>
+        <h2 id="order">Today's prices 👇</h2>
         <p className="center">
           The normal price is <s>{naira(regularFor(starter))}</s> for one. Today you get it for{' '}
           <strong className="red">{naira(starter.price)}</strong>. Buy more and each one gets cheaper.
         </p>
+
+        <div className="packs">
+          {config.packages.map((p) => (
+            <a key={p.id} href="#order-form" className="pack" onClick={(e) => { choose(p.id); toForm(e) }}>
+              <span className="pack-main">
+                <span className="pack-title">
+                  {p.title} {p.popular && <em>Most men pick this one</em>}
+                </span>
+                <span className="pack-save">
+                  You save {naira(savingFor(p))}
+                  {p.tubes > 1 && ` (${naira(perTube(p))} each)`}
+                </span>
+              </span>
+              <span className="pack-money">
+                <s>{naira(regularFor(p))}</s>
+                <b>{naira(p.price)}</b>
+              </span>
+            </a>
+          ))}
+        </div>
 
         <OrderForm pkg={pkg} pkgId={pkgId} choose={choose} onComplete={onComplete} />
 
@@ -297,41 +322,20 @@ function OrderForm({ pkg, pkgId, choose, onComplete }) {
   }
 
   return (
-    <form className="order" onSubmit={submit} onFocus={begin}>
+    <form id="order-form" className="order" onSubmit={submit} onFocus={begin}>
       <div className="order-head">
         <h3>Fill this form and we will bring it to you</h3>
         <p>Tap the button and your order opens in WhatsApp. Press send and we will confirm delivery.</p>
       </div>
 
-      <p className="step full"><b>1</b> Pick the one you want</p>
-      <div className="packs full" role="radiogroup" aria-label="Package">
-        {config.packages.map((p) => (
-          <button
-            key={p.id}
-            type="button"
-            role="radio"
-            aria-checked={p.id === pkgId}
-            className={`pack ${p.id === pkgId ? 'is-on' : ''}`}
-            onClick={() => choose(p.id)}
-          >
-            <span className="dot" aria-hidden="true" />
-            <span className="pack-main">
-              <span className="pack-title">
-                {p.title} {p.popular && <em>Most men pick this one</em>}
-              </span>
-              <span className="pack-save">
-                You save {naira(savingFor(p))}
-                {p.tubes > 1 && ` (${naira(perTube(p))} each)`}
-              </span>
-            </span>
-            <span className="pack-money">
-              <s>{naira(regularFor(p))}</s>
-              <b>{naira(p.price)}</b>
-            </span>
-          </button>
-        ))}
-      </div>
-      <p className="step full"><b>2</b> Where should we bring it?</p>
+      <label className="full">
+        Package
+        <select required value={pkgId} onChange={(e) => choose(e.target.value)}>
+          {config.packages.map((p) => (
+            <option key={p.id} value={p.id}>{p.title}: {naira(p.price)}</option>
+          ))}
+        </select>
+      </label>
 
       <label>
         Full name
