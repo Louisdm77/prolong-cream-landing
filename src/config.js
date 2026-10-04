@@ -31,13 +31,11 @@ export const config = {
   orderEndpoint: env.VITE_ORDER_ENDPOINT || '',
   whatsappNumber: (env.VITE_WHATSAPP_NUMBER || '').replace(/\D/g, ''),
 
-  // Real product photos. To host them in this project instead, put the files in
-  // /public/images and change these to '/images/your-file.jpg'.
-  // If a photo fails to load, the page shows the built-in illustration instead.
+  // Product photos, stored in /public/images. Replace the files or change the paths.
   photos: {
-    hero: 'https://degreatstores.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-17-at-17.19.58-2.jpeg',
-    usage: 'https://degreatstores.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-27-at-18.08.50.jpeg',
-    pack: 'https://degreatstores.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-17-at-17.19.58-1.jpeg',
+    hero: '/images/product.jpg',
+    pack: '/images/box.jpg',
+    usage: '/images/tube.jpg',
   },
 
   packages: [

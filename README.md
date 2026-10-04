@@ -17,8 +17,7 @@ npm run build    # production files in /dist
    `VITE_WHATSAPP_NUMBER`. Until one is set, the form shows an error instead of taking orders.
 2. **Check the pixel IDs.** `src/config.js` uses the seven pixel IDs from degreatstores.com.
    Set `VITE_FB_PIXEL_IDS` (comma separated) to use different ones.
-3. **Photos.** The page loads your product photos from degreatstores.com. To host them here,
-   put the files in `public/images/` and update `photos` in `src/config.js`.
+3. **Photos.** The product photos are in `public/images/`. Replace the files to change them.
 
 Prices, packages, photos and customer feedback are all in `src/config.js`. The feedback section stays hidden until you add real customer screenshots or messages there.
 
