@@ -245,3 +245,6 @@ a.pack { text-decoration: none; }
 .order { scroll-margin-top: 12px; }
 
 .thanks-img { width: 150px; margin: 0 auto 14px; }
+
+/* The order button is green so it stands apart from the yellow page buttons */
+.order .btn { background: #12a150; color: #fff; }
