@@ -161,41 +161,13 @@ function Landing({ onComplete }) {
           </>
         )}
 
-        <h2 id="order">Now pick the one you want 👇</h2>
+        <h2 id="order">Order yours here 👇</h2>
         <p className="center">
           The normal price is <s>{naira(regularFor(starter))}</s> for one. Today you get it for{' '}
           <strong className="red">{naira(starter.price)}</strong>. Buy more and each one gets cheaper.
         </p>
 
-        <div className="packs" role="radiogroup" aria-label="Package">
-          {config.packages.map((p) => (
-            <button
-              key={p.id}
-              type="button"
-              role="radio"
-              aria-checked={p.id === pkgId}
-              className={`pack ${p.id === pkgId ? 'is-on' : ''}`}
-              onClick={() => choose(p.id)}
-            >
-              <span className="dot" aria-hidden="true" />
-              <span className="pack-main">
-                <span className="pack-title">
-                  {p.title} {p.popular && <em>Most men pick this one</em>}
-                </span>
-                <span className="pack-save">
-                  You save {naira(savingFor(p))}
-                  {p.tubes > 1 && ` (${naira(perTube(p))} each)`}
-                </span>
-              </span>
-              <span className="pack-money">
-                <s>{naira(regularFor(p))}</s>
-                <b>{naira(p.price)}</b>
-              </span>
-            </button>
-          ))}
-        </div>
-
-        <OrderForm pkg={pkg} onComplete={onComplete} />
+        <OrderForm pkg={pkg} pkgId={pkgId} choose={choose} onComplete={onComplete} />
 
         <h2>Questions men ask us</h2>
         <div className="qa">
@@ -255,7 +227,7 @@ function CallLine() {
 
 /* ------------------------------- Order form ------------------------------- */
 
-function OrderForm({ pkg, onComplete }) {
+function OrderForm({ pkg, pkgId, choose, onComplete }) {
   const [form, setForm] = useState({ name: '', phone: '', phone2: '', address: '', state: '' })
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState('')
@@ -330,6 +302,36 @@ function OrderForm({ pkg, onComplete }) {
         <h3>Fill this form and we will bring it to you</h3>
         <p>Tap the button and your order opens in WhatsApp. Press send and we will confirm delivery.</p>
       </div>
+
+      <p className="step full"><b>1</b> Pick the one you want</p>
+      <div className="packs full" role="radiogroup" aria-label="Package">
+        {config.packages.map((p) => (
+          <button
+            key={p.id}
+            type="button"
+            role="radio"
+            aria-checked={p.id === pkgId}
+            className={`pack ${p.id === pkgId ? 'is-on' : ''}`}
+            onClick={() => choose(p.id)}
+          >
+            <span className="dot" aria-hidden="true" />
+            <span className="pack-main">
+              <span className="pack-title">
+                {p.title} {p.popular && <em>Most men pick this one</em>}
+              </span>
+              <span className="pack-save">
+                You save {naira(savingFor(p))}
+                {p.tubes > 1 && ` (${naira(perTube(p))} each)`}
+              </span>
+            </span>
+            <span className="pack-money">
+              <s>{naira(regularFor(p))}</s>
+              <b>{naira(p.price)}</b>
+            </span>
+          </button>
+        ))}
+      </div>
+      <p className="step full"><b>2</b> Where should we bring it?</p>
 
       <label>
         Full name
