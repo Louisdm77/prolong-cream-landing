@@ -15,8 +15,8 @@ npm run build    # production files in /dist
 1. **Activate order emails.** Orders are emailed to the address in `src/config.js` (`orderEmail`)
    through FormSubmit. Place one test order, then click the activation link FormSubmit emails you.
    After that every order arrives in the inbox. To use another address set `VITE_ORDER_EMAIL`.
-2. **Check the pixel IDs.** `src/config.js` uses the seven pixel IDs from degreatstores.com.
-   Set `VITE_FB_PIXEL_IDS` (comma separated) to use different ones.
+2. **Add your pixel.** No pixel is connected by default. Put your Meta Pixel ID in `pixelIds`
+   in `src/config.js`, or set `VITE_FB_PIXEL_IDS` (comma separated for more than one).
 3. **Photos.** The product photos are in `public/images/`. Replace the files to change them.
 
 Prices, packages, photos and customer feedback are all in `src/config.js`. The feedback section stays hidden until you add real customer screenshots or messages there.

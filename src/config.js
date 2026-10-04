@@ -16,19 +16,9 @@ export const config = {
   // Phone number shown on the page for customers who prefer to call.
   phone: '08135390524',
 
-  // Meta Pixel IDs. These are the ones already running on degreatstores.com.
-  // Override with VITE_FB_PIXEL_IDS, or edit the list.
-  pixelIds: envPixels.length
-    ? envPixels
-    : [
-        '805890715505239',
-        '2267743820653312',
-        '906982882071587',
-        '1386676502852055',
-        '1106324765684022',
-        '983958181374013',
-        '2359349084882296',
-      ],
+  // Meta Pixel IDs. Empty means no pixel loads and nothing is sent to Facebook.
+  // Add your own pixel ID here, e.g. ['123456789012345'], or set VITE_FB_PIXEL_IDS.
+  pixelIds: envPixels,
 
   // Orders are emailed to this address through FormSubmit (formsubmit.co).
   // The very first order triggers a one-time activation email: click the link in it.
