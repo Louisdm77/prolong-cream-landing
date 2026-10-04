@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { config, naira, regularFor, savingFor, perTube, phonePretty, phoneHref } from './config'
 import { track, packageParams } from './pixel'
-import { Photo, TubeArt, ParcelArt, ApplyArt } from './Illustrations'
+import { TubeArt, ParcelArt } from './Illustrations'
 
 const STATES = [
   'Abia', 'Adamawa', 'Akwa Ibom', 'Anambra', 'Bauchi', 'Bayelsa', 'Benue', 'Borno', 'Cross River',
@@ -89,21 +89,7 @@ function Landing({ onComplete }) {
 
         <p className="center big">No drugs to swallow. No injection. You just rub it on, that's all.</p>
 
-        <figure className="ad ad-hero">
-          <p className="ad-top">NAFDAC approved herbal cream for men</p>
-          <div className="ad-photo">
-            <Photo eager src={config.photos.hero} alt={`${config.productName} tube`} fallback={<TubeArt count={1} />} />
-            <span className="burst">
-              <small>Special price</small>
-              <b>{naira(starter.price)}</b>
-              <s>{naira(regularFor(starter))}</s>
-            </span>
-          </div>
-          <figcaption className="ad-bottom">
-            <strong>Rub it on. Last longer.</strong>
-            <span>No pills. No injection. Delivered in a covered package.</span>
-          </figcaption>
-        </figure>
+        <img className="creative" src="/images/creative-search.jpg" width="1080" height="1080" alt="Men's Prolong Cream: stop searching, start lasting" />
 
         <a href="#order" className="btn" onClick={toOrder}>👉 Yes, I want my own cream</a>
         <p className="center small">NAFDAC approved. Delivered to your door in a covered package.</p>
@@ -139,17 +125,7 @@ function Landing({ onComplete }) {
           <li><strong>It is mild on the skin.</strong> It is made for a grown man's private area.</li>
         </ul>
 
-        <figure className="ad ad-pack">
-          <p className="ad-top">Smart men stock up</p>
-          <div className="ad-photo">
-            <Photo src={config.photos.pack} alt={`${config.productName} pack`} fallback={<TubeArt count={2} />} />
-            <span className="ribbon">Save {naira(savingFor(config.packages[1]))}</span>
-          </div>
-          <figcaption className="ad-bottom">
-            <strong>2 creams for {naira(config.packages[1].price)}</strong>
-            <span>That is {naira(perTube(config.packages[1]))} each instead of {naira(config.regularPricePerTube)}.</span>
-          </figcaption>
-        </figure>
+        <img className="creative" src="/images/creative-chat.jpg" width="1080" height="1080" loading="lazy" alt="Men's Prolong Cream: give her a better story to tell" />
 
         <h2>How to use it (3 simple steps)</h2>
         <ol className="steps">
@@ -159,17 +135,6 @@ function Landing({ onComplete }) {
         </ol>
         <p className="warn">For external use only. For adults only.</p>
 
-        <figure className="ad ad-use">
-          <p className="ad-top">Ready in 5 minutes</p>
-          <div className="ad-photo">
-            <Photo src={config.photos.usage} alt={`How to apply ${config.productName}`} fallback={<ApplyArt />} />
-          </div>
-          <figcaption className="ad-bottom ad-steps">
-            <span><b>1</b> Wash</span>
-            <span><b>2</b> Rub</span>
-            <span><b>3</b> Massage</span>
-          </figcaption>
-        </figure>
 
         <h2>Nobody will know what you ordered</h2>
         <div className="parcel"><ParcelArt /></div>
