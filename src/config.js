@@ -16,9 +16,8 @@ export const config = {
   // Phone number shown on the page for customers who prefer to call.
   phone: '08135390524',
 
-  // Meta Pixel IDs. Empty means no pixel loads and nothing is sent to Facebook.
-  // Add your own pixel ID here, e.g. ['123456789012345'], or set VITE_FB_PIXEL_IDS.
-  pixelIds: envPixels,
+  // Meta Pixel ID ("Prolong Website Pixel"). Override with VITE_FB_PIXEL_IDS if needed.
+  pixelIds: envPixels.length ? envPixels : ['1073564882134939'],
 
   // Orders are emailed to this address through FormSubmit (formsubmit.co).
   // The very first order triggers a one-time activation email: click the link in it.
