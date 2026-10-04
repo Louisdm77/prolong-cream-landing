@@ -317,7 +317,10 @@ function OrderForm({ pkg, pkgId, choose, onComplete }) {
     } catch (err) {
       console.error(err)
       setStatus('idle')
-      setError(`Your order did not go through. Check your network and tap the button again, or call ${phonePretty}.`)
+      const why = /activat/i.test(err.message)
+        ? ' (Order email is not activated yet: open the FormSubmit email in the shop inbox and click Activate.)'
+        : ` (${err.message})`
+      setError(`Your order did not go through. Check your network and tap the button again, or call ${phonePretty}.${why}`)
     }
   }
 
