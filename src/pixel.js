@@ -9,35 +9,23 @@
 import { config } from './config'
 
 let ready = false
+let firstView = true
 
+// The base pixel code (Meta's own snippet, with the pixel ID and the first PageView)
+// lives in index.html. This only switches on the event helper below.
 export function initPixel() {
-  if (ready || typeof window === 'undefined' || !config.pixelIds.length) return
-  /* eslint-disable */
-  !(function (f, b, e, v, n, t, s) {
-    if (f.fbq) return
-    n = f.fbq = function () {
-      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-    }
-    if (!f._fbq) f._fbq = n
-    n.push = n
-    n.loaded = true
-    n.version = '2.0'
-    n.queue = []
-    t = b.createElement(e)
-    t.async = true
-    t.src = v
-    s = b.getElementsByTagName(e)[0]
-    s.parentNode.insertBefore(t, s)
-  })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js')
-  /* eslint-enable */
-  config.pixelIds.forEach((id) => window.fbq('init', id))
-  ready = true
+  ready = typeof window !== 'undefined' && typeof window.fbq === 'function'
 }
 
 const eventId = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 10)
 
 export function track(name, params = {}) {
   if (!ready || !window.fbq) return
+  // index.html already sent the PageView for the first screen.
+  if (name === 'PageView' && firstView) {
+    firstView = false
+    return
+  }
   window.fbq('track', name, params, { eventID: eventId() })
 }
 

@@ -15,8 +15,8 @@ npm run build    # production files in /dist
 1. **Activate order emails.** Orders are emailed to the address in `src/config.js` (`orderEmail`)
    through FormSubmit. Place one test order, then click the activation link FormSubmit emails you.
    After that every order arrives in the inbox. To use another address set `VITE_ORDER_EMAIL`.
-2. **Pixel.** The site reports to the pixel ID in `pixelIds` in `src/config.js`.
-   Set `VITE_FB_PIXEL_IDS` (comma separated) to use different ones.
+2. **Pixel.** Meta's base pixel code, with the pixel ID, is in `index.html`. Change the ID there
+   (it appears twice). Open the site with `?pixeltest` on the end to check it in any browser.
 3. **Photos.** The product photos are in `public/images/`. Replace the files to change them.
 
 Prices, packages, photos and customer feedback are all in `src/config.js`. The feedback section stays hidden until you add real customer screenshots or messages there.

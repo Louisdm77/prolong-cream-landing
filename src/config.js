@@ -3,11 +3,6 @@
 
 const env = import.meta.env
 
-const envPixels = (env.VITE_FB_PIXEL_IDS || '')
-  .split(',')
-  .map((s) => s.trim())
-  .filter(Boolean)
-
 export const config = {
   productName: "Men's Prolong Cream",
   currency: 'NGN',
@@ -16,8 +11,7 @@ export const config = {
   // Phone number shown on the page for customers who prefer to call.
   phone: '08135390524',
 
-  // Meta Pixel ID ("Prolong Website Pixel"). Override with VITE_FB_PIXEL_IDS if needed.
-  pixelIds: envPixels.length ? envPixels : ['1073564882134939'],
+  // The Meta Pixel ID (1073564882134939) is set in index.html, in Meta's own code snippet.
 
   // Orders are emailed to this address through FormSubmit (formsubmit.co).
   // The very first order triggers a one-time activation email: click the link in it.
