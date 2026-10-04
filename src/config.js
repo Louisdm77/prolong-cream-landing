@@ -13,6 +13,9 @@ export const config = {
   currency: 'NGN',
   regularPricePerTube: 30000,
 
+  // Phone number shown on the page for customers who prefer to call.
+  phone: '08135390524',
+
   // Meta Pixel IDs. These are the ones already running on degreatstores.com.
   // Override with VITE_FB_PIXEL_IDS, or edit the list.
   pixelIds: envPixels.length
@@ -55,6 +58,9 @@ export const config = {
   //    { text: 'the customer message', name: 'Customer', place: 'Ibadan' }
   feedbackMessages: [],
 }
+
+export const phonePretty = config.phone.replace(/(\d{4})(\d{3})(\d{4})/, '$1 $2 $3')
+export const phoneHref = 'tel:+234' + config.phone.replace(/^0/, '')
 
 export const naira = (n) => '₦' + Number(n).toLocaleString('en-NG')
 

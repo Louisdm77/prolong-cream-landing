@@ -29,6 +29,7 @@ Prices, packages, photos and customer feedback are all in `src/config.js`. The f
 | `ViewContent` | Landing page loads |
 | `AddToCart` | Visitor picks a package |
 | `InitiateCheckout` | Visitor starts filling the order form |
+| `Contact` | Visitor taps the phone number |
 | `Lead` | Order form submitted successfully |
 | `Purchase` | `/thank-you` shown after an order (value and currency NGN included) |
 

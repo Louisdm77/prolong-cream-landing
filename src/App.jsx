@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { config, naira, regularFor, savingFor, perTube } from './config'
+import { config, naira, regularFor, savingFor, perTube, phonePretty, phoneHref } from './config'
 import { track, packageParams } from './pixel'
 import { Photo, TubeArt, ParcelArt, ApplyArt } from './Illustrations'
 
@@ -107,6 +107,7 @@ function Landing({ onComplete }) {
 
         <a href="#order" className="btn" onClick={toOrder}>👉 Yes, I want my own cream</a>
         <p className="center small">NAFDAC approved. Delivered to your door in a covered package.</p>
+        <CallLine />
 
         <h2>Brother, let's be honest</h2>
         <p>
@@ -255,6 +256,7 @@ function Landing({ onComplete }) {
         </p>
 
         <a href="#order" className="btn" onClick={toOrder}>👉 Take me to the order form</a>
+        <CallLine />
       </main>
 
       <footer className="footer">
@@ -274,6 +276,15 @@ function Landing({ onComplete }) {
         <a href="#order" className="btn" onClick={toOrder}>Order now</a>
       </div>
     </>
+  )
+}
+
+function CallLine() {
+  return (
+    <p className="call">
+      Prefer to talk? Call{' '}
+      <a href={phoneHref} onClick={() => track('Contact')}>{phonePretty}</a>
+    </p>
   )
 }
 
@@ -392,6 +403,7 @@ function OrderForm({ pkg, onComplete }) {
         {status === 'sending' ? 'Sending your order…' : `Send my order: ${naira(pkg.price)}`}
       </button>
       <p className="fine full">Your details are used only to deliver your order.</p>
+      <div className="full"><CallLine /></div>
     </form>
   )
 }

@@ -228,3 +228,6 @@ h2 { font-size: clamp(27px, 7.5vw, 38px); line-height: 1.15; margin: 38px 0 16px
 .ad .photo { aspect-ratio: auto; object-fit: contain; width: auto; max-width: 100%; max-height: 430px; margin: 0 auto; padding: 10px 0; }
 .ad-hero .photo { max-width: 54%; margin: 0 auto 0 3%; }
 .ad-hero .burst { right: 10px; bottom: 34%; }
+
+.call { text-align: center; font-weight: bold; margin: 10px 0 0; }
+.call a { display: inline-block; background: var(--black); color: var(--yellow); font: 26px/1 var(--head); letter-spacing: 1px; padding: 8px 14px; text-decoration: none; margin-left: 4px; }
