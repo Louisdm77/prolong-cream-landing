@@ -248,3 +248,5 @@ a.pack { text-decoration: none; }
 
 /* The order button is green so it stands apart from the yellow page buttons */
 .order .btn { background: #12a150; color: #fff; }
+
+.deal { font-size: 22px; font-weight: bold; margin-bottom: 0; }

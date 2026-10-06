@@ -94,10 +94,15 @@ function Landing({ onComplete }) {
 
         <p className="center big">No drugs to swallow. No injection. You just rub it on, that's all.</p>
 
-        <img className="creative" src="/images/creative-search.jpg" width="1080" height="1080" alt="Men's Prolong Cream: stop searching, start lasting" />
-
+        <p className="center deal">
+          Today: <s>{naira(regularFor(starter))}</s> <strong className="red">{naira(starter.price)}</strong>
+        </p>
         <a href="#order" className="btn" onClick={toOrder}>👉 Yes, I want my own cream</a>
         <p className="center small">NAFDAC approved. Delivered to your door in a covered package.</p>
+
+        <img className="creative" src="/images/creative-search.jpg" width="1080" height="1080" alt="Men's Prolong Cream: stop searching, start lasting" />
+
+        <a href="#order" className="btn" onClick={toOrder}>👉 See today's prices and order</a>
         <CallLine />
 
         <h2>Brother, let's be honest</h2>
@@ -129,6 +134,34 @@ function Landing({ onComplete }) {
           <li><strong>It works where you rub it.</strong> No capsules, no waiting for your stomach to digest anything.</li>
           <li><strong>It is mild on the skin.</strong> It is made for a grown man's private area.</li>
         </ul>
+
+        <h2 id="order">Today's prices 👇</h2>
+        <p className="center">
+          The normal price is <s>{naira(regularFor(starter))}</s> for one. Today you get it for{' '}
+          <strong className="red">{naira(starter.price)}</strong>. Buy more and each one gets cheaper.
+        </p>
+
+        <div className="packs">
+          {config.packages.map((p) => (
+            <a key={p.id} href="#order-form" className="pack" onClick={(e) => { choose(p.id); toForm(e) }}>
+              <span className="pack-main">
+                <span className="pack-title">
+                  {p.title} {p.popular && <em>Most men pick this one</em>}
+                </span>
+                <span className="pack-save">
+                  You save {naira(savingFor(p))}
+                  {p.tubes > 1 && ` (${naira(perTube(p))} each)`}
+                </span>
+              </span>
+              <span className="pack-money">
+                <s>{naira(regularFor(p))}</s>
+                <b>{naira(p.price)}</b>
+              </span>
+            </a>
+          ))}
+        </div>
+
+        <OrderForm pkg={pkg} pkgId={pkgId} choose={choose} onComplete={onComplete} />
 
         <img className="creative" src="/images/creative-chat.jpg" width="1080" height="1080" loading="lazy" alt="Men's Prolong Cream: give her a better story to tell" />
 
@@ -165,34 +198,6 @@ function Landing({ onComplete }) {
             </div>
           </>
         )}
-
-        <h2 id="order">Today's prices 👇</h2>
-        <p className="center">
-          The normal price is <s>{naira(regularFor(starter))}</s> for one. Today you get it for{' '}
-          <strong className="red">{naira(starter.price)}</strong>. Buy more and each one gets cheaper.
-        </p>
-
-        <div className="packs">
-          {config.packages.map((p) => (
-            <a key={p.id} href="#order-form" className="pack" onClick={(e) => { choose(p.id); toForm(e) }}>
-              <span className="pack-main">
-                <span className="pack-title">
-                  {p.title} {p.popular && <em>Most men pick this one</em>}
-                </span>
-                <span className="pack-save">
-                  You save {naira(savingFor(p))}
-                  {p.tubes > 1 && ` (${naira(perTube(p))} each)`}
-                </span>
-              </span>
-              <span className="pack-money">
-                <s>{naira(regularFor(p))}</s>
-                <b>{naira(p.price)}</b>
-              </span>
-            </a>
-          ))}
-        </div>
-
-        <OrderForm pkg={pkg} pkgId={pkgId} choose={choose} onComplete={onComplete} />
 
         <h2>Questions men ask us</h2>
         <div className="qa">
