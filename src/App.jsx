@@ -83,56 +83,55 @@ function Landing({ onComplete }) {
 
   return (
     <>
-      <p className="topbar">Attention: married men and any man with a serious woman</p>
+      <p className="topbar">Men's sexual health: discreet support for premature ejaculation</p>
 
       <main className="letter">
-        <p className="pre">If you finish too quickly in bed, read this page to the end.</p>
+        <p className="pre">Premature ejaculation is one of the most common sexual health concerns in men.</p>
 
         <h1>
-          Rub on this small cream before the action, last longer, and <mark>you decide when to finish</mark>
+          A herbal, external-use cream made to help men with <mark>premature ejaculation</mark>
         </h1>
 
-        <p className="center big">No drugs to swallow. No injection. You just rub it on, that's all.</p>
+        <p className="center big">Applied to the skin. Nothing to swallow, no injections.</p>
 
         <p className="center deal">
           Today: <s>{naira(regularFor(starter))}</s> <strong className="red">{naira(starter.price)}</strong>
         </p>
-        <a href="#order" className="btn" onClick={toOrder}>👉 Yes, I want my own cream</a>
-        <p className="center small">NAFDAC approved. Delivered to your door in a covered package.</p>
+        <a href="#order" className="btn" onClick={toOrder}>👉 Order the cream</a>
+        <p className="center small">
+          {config.nafdacNumber ? `NAFDAC Reg. No. ${config.nafdacNumber}. ` : ''}
+          Delivered to your door in plain packaging.
+        </p>
 
-        <img className="creative" src="/images/creative-search.jpg" width="1080" height="1080" alt="Men's Prolong Cream: stop searching, start lasting" />
+        <img className="creative" src={config.photos.hero} alt={`${config.productName} tube and box`} />
 
         <a href="#order" className="btn" onClick={toOrder}>👉 See today's prices and order</a>
         <CallLine />
 
-        <h2>Brother, let's be honest</h2>
+        <h2>You are not alone</h2>
         <p>
-          This is not about whether you want your woman. You do. The problem is that the body does not
-          always cooperate, and no man likes to talk about it.
+          Premature ejaculation affects many adult men at some point in their lives. Stress, tiredness
+          and anxiety can all play a part. It is a health issue, not a personal failing, and it is
+          worth addressing.
         </p>
-        <p>See if any of these happen to you:</p>
+        <p>Men often tell us they:</p>
         <ul className="list no">
-          <li>You finish before your woman has even started to enjoy it.</li>
-          <li>After work and all the stress of the day, getting hard and staying hard becomes a problem.</li>
-          <li>You are tired of heavy drugs that leave your head and chest feeling funny.</li>
-          <li>You want something you can use quietly, without anybody knowing your business.</li>
+          <li>Feel they have little control over the timing of ejaculation.</li>
+          <li>Feel anxious or stressed about it, which can affect their relationship.</li>
+          <li>Prefer to try a topical product before oral medication.</li>
+          <li>Want something they can buy privately.</li>
         </ul>
-        <p>
-          If you nodded at even one, you are not the only one. Plenty of men face it. The difference is
-          that some men have found something that helps.
-        </p>
 
-        <h2>This is where {config.productName} comes in</h2>
+        <h2>About {config.productName}</h2>
         <p>
-          {config.productName} is a NAFDAC approved herbal cream made to <strong>delay climax</strong> so
-          you can control your timing. You do not swallow it. You rub it on the gbola before the show starts.
+          {config.productName} is a herbal cream for external use, made to help men who experience
+          premature ejaculation. It is applied to the skin shortly before intercourse.
         </p>
         <ul className="list yes">
-          <li><strong>You last longer.</strong> It is made to delay climax, so you control the pace.</li>
-          <li><strong>You stay strong.</strong> It is made to support your erection and keep it firm.</li>
-          <li><strong>Your mind is at rest.</strong> When you are not worried about how long you will last, you can focus on your woman.</li>
-          <li><strong>It works where you rub it.</strong> No capsules, no waiting for your stomach to digest anything.</li>
-          <li><strong>It is mild on the skin.</strong> It is made for a grown man's private area.</li>
+          <li><strong>Topical.</strong> Applied to the skin, with no capsules or tablets.</li>
+          <li><strong>Herbal formula.</strong> Made with plant-based ingredients.</li>
+          <li><strong>Simple to use.</strong> Clear instructions below.</li>
+          <li><strong>Private.</strong> Plain packaging and direct delivery.</li>
         </ul>
 
         <h2 id="order">Today's prices 👇</h2>
@@ -146,7 +145,7 @@ function Landing({ onComplete }) {
             <a key={p.id} href="#order-form" className="pack" onClick={(e) => { choose(p.id); toForm(e) }}>
               <span className="pack-main">
                 <span className="pack-title">
-                  {p.title} {p.popular && <em>Most men pick this one</em>}
+                  {p.title} {p.popular && <em>Most popular</em>}
                 </span>
                 <span className="pack-save">
                   You save {naira(savingFor(p))}
@@ -163,28 +162,27 @@ function Landing({ onComplete }) {
 
         <OrderForm pkg={pkg} pkgId={pkgId} choose={choose} onComplete={onComplete} />
 
-        <img className="creative" src="/images/creative-chat.jpg" width="1080" height="1080" loading="lazy" alt="Men's Prolong Cream: give her a better story to tell" />
+        <img className="creative" src={config.photos.pack} loading="lazy" alt={`${config.productName} packaging`} />
 
-        <h2>How to use it (3 simple steps)</h2>
+        <h2>How to use it</h2>
         <ol className="steps">
-          <li><strong>Wash.</strong> Wash the gbola with warm water and dry it.</li>
-          <li><strong>Rub.</strong> Rub the cream round the whole gbola and the scrotum.</li>
-          <li><strong>Massage.</strong> Massage for about 5 minutes so it absorbs well.</li>
+          <li><strong>Wash.</strong> Wash the area with warm water and dry it.</li>
+          <li><strong>Apply.</strong> Apply a small amount of cream to the penis.</li>
+          <li><strong>Massage.</strong> Massage gently until it absorbs, as directed on the pack.</li>
         </ol>
-        <p className="warn">For external use only. For adults only.</p>
+        <p className="warn">For external use only. For adults 18 and over. Follow the instructions on the pack.</p>
 
-
-        <h2>Nobody will know what you ordered</h2>
+        <h2>Discreet delivery</h2>
         <div className="parcel"><ParcelArt /></div>
         <ul className="list yes">
-          <li>The package is fully covered. Nothing is written on the outside.</li>
-          <li>Our dispatch manager calls only you.</li>
-          <li>Your name and number go nowhere else.</li>
+          <li>Plain packaging with nothing written on the outside.</li>
+          <li>Our dispatch team contacts only you.</li>
+          <li>Your details are used only for your delivery.</li>
         </ul>
 
         {hasFeedback && (
           <>
-            <h2>See what our customers send us</h2>
+            <h2>What customers tell us</h2>
             <div className="chats">
               {config.feedbackScreenshots.map((src) => (
                 <img key={src} className="chat-shot" src={src} alt="Customer feedback screenshot" loading="lazy" />
@@ -199,28 +197,19 @@ function Landing({ onComplete }) {
           </>
         )}
 
-        <h2>Questions men ask us</h2>
+        <h2>Common questions</h2>
         <div className="qa">
-          <p className="q">Is it only for older men?</p>
-          <p>No. Any sexually active adult man can use it.</p>
-          <p className="q">Is it hard to use?</p>
-          <p>Not at all. Wash and dry the gbola, rub the cream on well, and massage until it absorbs.</p>
+          <p className="q">Who is it for?</p>
+          <p>Adult men who experience premature ejaculation.</p>
           <p className="q">Is it safe for my skin?</p>
-          <p>It is a herbal cream for external use and it is made to be mild. Still, test a little on a small area first. If it itches or burns, stop using it.</p>
-          <p className="q">Does it help with erection?</p>
-          <p>Yes. It is made to support men who struggle to get hard and stay hard.</p>
+          <p>It is a herbal cream for external use. Test a small amount on a small area first. If it itches, burns or causes irritation, stop using it.</p>
+          <p className="q">Should I see a doctor?</p>
+          <p>If the problem is persistent, causes distress, or comes with pain or other symptoms, speak to a doctor or pharmacist. They can check for underlying causes and discuss other options.</p>
+          <p className="q">Can I use it if I am taking other medicines?</p>
+          <p>If you have a medical condition, allergies or take regular medicines, ask a pharmacist or doctor before use.</p>
           <p className="q">Will anyone know what I ordered?</p>
-          <p>No. The package is covered and we call only you.</p>
+          <p>No. The package is plain and we contact only you.</p>
         </div>
-
-        <p className="ps">
-          <strong>P.S.</strong> You can close this page and nothing changes. Or you can fill the form, get your cream,
-          and try something different this week. The choice is yours.
-        </p>
-        <p className="ps">
-          <strong>P.P.S.</strong> If you pick 2 for {naira(config.packages[1].price)}, each cream comes down to{' '}
-          {naira(perTube(config.packages[1]))} instead of {naira(config.regularPricePerTube)}.
-        </p>
 
         <a href="#order" className="btn" onClick={toOrder}>👉 Take me to the order form</a>
         <CallLine />
@@ -231,7 +220,10 @@ function Landing({ onComplete }) {
           This site is not a part of the Facebook website or Facebook Inc. Additionally, this site is
           not endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.
         </p>
-        <p>Results differ from person to person. This product is not intended to diagnose, treat or cure any disease.</p>
+        <p>
+          Results differ from person to person. This information is not a substitute for advice from a
+          doctor or pharmacist. Keep out of reach of children.
+        </p>
         <p>&copy; {new Date().getFullYear()} {config.productName} Nigeria. All rights reserved.</p>
       </footer>
 
