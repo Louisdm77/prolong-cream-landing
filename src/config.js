@@ -6,10 +6,6 @@ const env = import.meta.env
 export const config = {
   productName: "Men's Prolong Cream",
   currency: 'NGN',
-
-  // Your NAFDAC registration number. Leave empty until the product is registered:
-  // the page only mentions NAFDAC when this is filled in.
-  nafdacNumber: '',
   regularPricePerTube: 30000,
 
   // Phone number shown on the page for customers who prefer to call.
