@@ -11,7 +11,7 @@ export const config = {
   // Phone number shown on the page for customers who prefer to call.
   phone: '08135390524',
 
-  // The Meta Pixel ID (1073564882134939) is set in index.html, in Meta's own code snippet.
+  // The Meta Pixel ID (1114044491532922) is set in index.html, in Meta's own code snippet.
 
   // Orders are emailed to this address through FormSubmit (formsubmit.co).
   // The very first order triggers a one-time activation email: click the link in it.

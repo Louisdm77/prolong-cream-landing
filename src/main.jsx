@@ -22,7 +22,7 @@ if (new URLSearchParams(window.location.search).has('pixeltest')) {
   const img = new Image()
   img.onload = () => { ping = 'REACHED Facebook' }
   img.onerror = () => { ping = 'BLOCKED before reaching Facebook' }
-  img.src = 'https://www.facebook.com/tr?id=1073564882134939&ev=PixelTestPing&noscript=1&t=' + Date.now()
+  img.src = 'https://www.facebook.com/tr?id=1114044491532922&ev=PixelTestPing&noscript=1&t=' + Date.now()
 
   setTimeout(() => {
     const urls = performance.getEntriesByType('resource').map((r) => r.name)
